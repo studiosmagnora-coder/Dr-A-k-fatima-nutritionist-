@@ -1,0 +1,269 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-sans: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-script: "Caveat", cursive;
+
+  --color-rose-primary: #C77D8A;
+  --color-rose-deep: #A85E6C;
+  --color-blush-soft: #F8E9EB;
+  --color-ivory-warm: #FFFCF8;
+  --color-gold-champagne: #C6A36B;
+  --color-charcoal-deep: #353035;
+  --color-plum-deep: #49343C;
+  --color-sage-soft: #A8B5A0;
+  --color-mauve-muted: #88747D;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: #FFFCF8;
+    color: #353035;
+    overflow-x: hidden;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-serif);
+    text-wrap: balance;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto !important;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes ctaGlowBlink {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+    box-shadow:
+      0 6px 20px -4px rgba(199, 125, 138, 0.42),
+      0 0 0 0 rgba(199, 125, 138, 0.35);
+  }
+  50% {
+    transform: scale(1.018);
+    opacity: 0.91;
+    box-shadow:
+      0 10px 28px -2px rgba(199, 125, 138, 0.62),
+      0 0 0 8px rgba(199, 125, 138, 0);
+  }
+}
+
+@keyframes ctaSheenSweep {
+  0% {
+    transform: translateX(-140%) skewX(-20deg);
+  }
+  45%,
+  100% {
+    transform: translateX(240%) skewX(-20deg);
+  }
+}
+
+@keyframes offerShimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes arrowGlide {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(4px);
+  }
+}
+
+@keyframes whatsappPulse {
+  0% {
+    box-shadow:
+      0 10px 25px -5px rgba(53, 48, 53, 0.35),
+      0 0 0 0 rgba(199, 125, 138, 0.5);
+  }
+  70% {
+    box-shadow:
+      0 10px 25px -5px rgba(53, 48, 53, 0.35),
+      0 0 0 12px rgba(199, 125, 138, 0);
+  }
+  100% {
+    box-shadow:
+      0 10px 25px -5px rgba(53, 48, 53, 0.35),
+      0 0 0 0 rgba(199, 125, 138, 0);
+  }
+}
+
+.cta-hero-primary {
+  position: relative;
+  overflow: hidden;
+  animation: ctaGlowBlink 2.6s ease-in-out infinite;
+  transition:
+    transform 240ms cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 240ms ease,
+    box-shadow 240ms ease;
+}
+
+.cta-hero-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 45%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.28),
+    transparent
+  );
+  animation: ctaSheenSweep 3.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.cta-hero-primary:hover {
+  animation-play-state: paused;
+  transform: scale(1.035);
+  box-shadow:
+    0 12px 30px -4px rgba(199, 125, 138, 0.65),
+    0 0 18px rgba(198, 163, 107, 0.28);
+}
+
+.cta-hero-primary:active {
+  transform: scale(0.99);
+}
+
+.offer-shimmer-label {
+  background: linear-gradient(
+    110deg,
+    #88747D 20%,
+    #C6A36B 42%,
+    #C77D8A 52%,
+    #C6A36B 62%,
+    #88747D 80%
+  );
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: offerShimmer 3.6s linear infinite;
+}
+
+.cta-arrow-move {
+  animation: arrowGlide 1.8s ease-in-out infinite;
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.group:hover .cta-arrow-move {
+  transform: translateX(4px);
+}
+
+.btn-luxe-hover {
+  transition:
+    transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 220ms ease,
+    border-color 220ms ease,
+    color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.btn-luxe-hover:hover {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 8px 22px -6px rgba(199, 125, 138, 0.38);
+}
+
+.btn-luxe-hover:active {
+  transform: translateY(0) scale(0.99);
+}
+
+.whatsapp-pulse-btn {
+  animation: whatsappPulse 2.8s ease-out infinite;
+  transition:
+    transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 220ms ease;
+}
+
+.whatsapp-pulse-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-hero-primary,
+  .cta-hero-primary::after,
+  .offer-shimmer-label,
+  .cta-arrow-move,
+  .whatsapp-pulse-btn,
+  .doodle-float-slow {
+    animation: none !important;
+  }
+
+  .offer-shimmer-label {
+    background: none;
+    color: #A85E6C;
+  }
+
+  .btn-luxe-hover:hover,
+  .cta-hero-primary:hover,
+  .whatsapp-pulse-btn:hover {
+    transform: none !important;
+  }
+}
+
+.font-script {
+  font-family: var(--font-script);
+}
+
+.journal-paper-surface {
+  background-color: #FFFCF8;
+  background-image: radial-gradient(rgba(198, 163, 107, 0.12) 1px, transparent 0);
+  background-size: 22px 22px;
+}
+
+.journal-card {
+  background: linear-gradient(165deg, #FFFFFF 0%, #FFFCF8 62%, rgba(248, 233, 235, 0.5) 100%);
+  box-shadow:
+    0 10px 28px -16px rgba(73, 52, 60, 0.22),
+    0 1px 0 rgba(255, 255, 255, 0.8) inset;
+}
+
+.washi-tape {
+  position: relative;
+  backdrop-filter: blur(2px);
+  box-shadow: 0 2px 6px -2px rgba(73, 52, 60, 0.16);
+}
+
+@keyframes doodleFloatSlow {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(1.5deg);
+  }
+}
+
+.doodle-float-slow {
+  animation: doodleFloatSlow 7s ease-in-out infinite;
+}
+

@@ -1,0 +1,6 @@
+{
+  "name": "Dr. Amtaul Kareem Fatima — Women's Nutrition & Weight Management",
+  "description": "Personalised online clinical nutrition consultations for women's weight management, PCOS, insulin resistance, thyroid support, postpartum nutrition, and metabolic health.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
